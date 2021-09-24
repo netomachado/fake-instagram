@@ -114,3 +114,62 @@ window.addEventListener('scroll', ()=> {
     botaoVerMais.insertAdjacentElement( "beforebegin", postClone);
   }
 })
+
+/*
+
+let estaCarregando = false;
+
+function createPost(title, body) {
+  return `<div class="card" id="">
+  <div class="card-header">
+    <div>
+      <img class="avatar" src="./img/avatar-example.png">
+      <b>${title}</b>
+    </div>
+    <img src="./img/icons/more-vertical.svg">
+  </div>
+  <div class="card-img">
+    <img src="./img/publication_example.jpg">
+  </div>
+  <div class="card-body">
+    <div class="card-itens">
+      <div class="likes">
+        <img src="./img/icons/heart.svg" onclick="likeAPost(this)" width="24px" class="like-btn">
+        <b>1 like</b>
+      </div>
+      <b>Postado no dia: 00/00/0000</b>
+    </div>
+    <div class="card-comments">
+      <p><b>Nome comentarista</b> ${body} </p>
+    </div>
+  </div>
+  <form class="form-comments" action="/comentar" method="post">
+    <input type="text" hidden name="postId" value="">
+    <input type="text" placeholder="Adicione um comentário..." name="description">
+    <button type="submit">Comentar</button>
+  </form>
+</div>`
+}
+
+async function fetchPosts() {
+  const { data: posts } = await axios.get('https://jsonplaceholder.typicode.com/posts');
+
+  posts.slice(0, 10).forEach(post => {
+    const postHtml = createPost(post.title, post.body);
+    verMaisBtn.insertAdjacentHTML('beforebegin', postHtml)
+  })
+
+}
+
+window.addEventListener('scroll', function() {
+  if (window.innerHeight + window.scrollY >= document.body.offsetHeight) {
+    // const postClone = post.cloneNode(true);
+    // verMaisBtn.insertAdjacentElement('beforebegin', postClone)
+
+    // estaCarregando = true;
+
+    fetchPosts()
+  }
+})
+
+*/
