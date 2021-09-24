@@ -3,10 +3,10 @@ const botaoVerMais = document.querySelector('#more');
 
 const post = document.querySelector(".card");
 
-botaoVerMais.addEventListener('click', ()=> {
-    const postClone = post.cloneNode(true);
-    botaoVerMais.insertAdjacentElement( "beforebegin", postClone);
-});
+//botaoVerMais.addEventListener('click', ()=> {
+//    const postClone = post.cloneNode(true);
+//    botaoVerMais.insertAdjacentElement( "beforebegin", postClone);
+//});
 
 botaoVerMais.addEventListener('mouseover', ()=> {
     botaoVerMais.style.cursor = "pointer";
@@ -68,7 +68,7 @@ const likeAPost = (likesImage) => {
 
   //if(imageSrc.indexOf("/img/icons/heart.svg") >= 0){
     if(imageSrc ==="./img/icons/heart.svg"){
-    likesImage.src = "./img/icons/red-heart.png";
+    likesImage.src = "./img/red-heart.png";
     //likesText.innerText = `${textNumber+1} ${textValues[1]}`;
     likesText.innerText = `${textNumber+1} ${(textNumber +1)=== 1 ? 'like' : 'likes'}`;
 
@@ -106,7 +106,7 @@ barraPesquisa.addEventListener("mouseout", ()=> {
 });
 
 
-
+/*
 
 window.addEventListener('scroll', ()=> {
   if(window.innerHeight + window.scrollY >= document.body.offsetHeight){
@@ -115,21 +115,21 @@ window.addEventListener('scroll', ()=> {
   }
 })
 
-/*
+*/
 
 let estaCarregando = false;
 
-function createPost(title, body) {
+function createPost(message) {
   return `<div class="card" id="">
   <div class="card-header">
     <div>
       <img class="avatar" src="./img/avatar-example.png">
-      <b>${title}</b>
+      <b>Neto</b>
     </div>
     <img src="./img/icons/more-vertical.svg">
   </div>
   <div class="card-img">
-    <img src="./img/publication_example.jpg">
+    <img src=${message}>
   </div>
   <div class="card-body">
     <div class="card-itens">
@@ -140,7 +140,7 @@ function createPost(title, body) {
       <b>Postado no dia: 00/00/0000</b>
     </div>
     <div class="card-comments">
-      <p><b>Nome comentarista</b> ${body} </p>
+      <p><b>Nome comentarista</b> Sou um pet super animado com muita energiae muito brincalhao </p>
     </div>
   </div>
   <form class="form-comments" action="/comentar" method="post">
@@ -152,24 +152,24 @@ function createPost(title, body) {
 }
 
 async function fetchPosts() {
-  const { data: posts } = await axios.get('https://jsonplaceholder.typicode.com/posts');
+  const { data: posts } = await axios.get("https://dog.ceo/api/breeds/image/random");
 
-  posts.slice(0, 10).forEach(post => {
-    const postHtml = createPost(post.title, post.body);
-    verMaisBtn.insertAdjacentHTML('beforebegin', postHtml)
-  })
+  //posts.slice(0, 10).forEach(post => {
+    const postHtml = createPost(posts.message);
+    botaoVerMais.insertAdjacentHTML('beforebegin', postHtml)
+  //})
 
 }
 
 window.addEventListener('scroll', function() {
   if (window.innerHeight + window.scrollY >= document.body.offsetHeight) {
-    // const postClone = post.cloneNode(true);
-    // verMaisBtn.insertAdjacentElement('beforebegin', postClone)
+    //const postClone = post.cloneNode(true);
+    //verMaisBtn.insertAdjacentElement('beforebegin', postClone)
 
-    // estaCarregando = true;
+    //estaCarregando = true;
 
     fetchPosts()
   }
 })
 
-*/
+
