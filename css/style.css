@@ -205,6 +205,14 @@ a{
     padding: 20px;
 }
 
+.error-message {
+  color: red;
+  text-align: left;
+  display: block;
+  margin: 0;
+  font-size: 12px;
+}
+
 @media(max-width:560px){
   .busca{
     display: none;

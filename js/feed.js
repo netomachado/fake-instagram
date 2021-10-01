@@ -119,17 +119,17 @@ window.addEventListener('scroll', ()=> {
 
 let estaCarregando = false;
 
-function createPost(message) {
+function createPost({ fotoPost, racaSite}) {
   return `<div class="card" id="">
   <div class="card-header">
     <div>
       <img class="avatar" src="./img/avatar-example.png">
-      <b>Neto</b>
+      <b>${racaSite}</b>
     </div>
     <img src="./img/icons/more-vertical.svg">
   </div>
   <div class="card-img">
-    <img src=${message}>
+    <img src=${fotoPost}>
   </div>
   <div class="card-body">
     <div class="card-itens">
@@ -153,9 +153,17 @@ function createPost(message) {
 
 async function fetchPosts() {
   const { data: posts } = await axios.get("https://dog.ceo/api/breeds/image/random");
+  
+  fotoPost = posts.message
+  raca1 = fotoPost.replace("https://images.dog.ceo/breeds/", "")
+  raca2 = raca1.match(/\/(\w+)/);
+  raca3 = raca2[0]
+  raca4 = raca1.replace(raca3, '')
+  racaSite = raca4.replace(".jpg", '')
+ 
 
   //posts.slice(0, 10).forEach(post => {
-    const postHtml = createPost(posts.message);
+    const postHtml = createPost({fotoPost, racaSite});
     botaoVerMais.insertAdjacentHTML('beforebegin', postHtml)
   //})
 
