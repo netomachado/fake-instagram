@@ -67,7 +67,7 @@ const likeAPost = (likesImage) => {
 
 
   //if(imageSrc.indexOf("/img/icons/heart.svg") >= 0){
-    if(imageSrc ==="./img/icons/heart.svg"){
+  if(imageSrc ==="./img/icons/heart.svg"){
     likesImage.src = "./img/red-heart.png";
     //likesText.innerText = `${textNumber+1} ${textValues[1]}`;
     likesText.innerText = `${textNumber+1} ${(textNumber +1)=== 1 ? 'like' : 'likes'}`;
@@ -75,7 +75,7 @@ const likeAPost = (likesImage) => {
   }else{
     likesImage.src = "./img/icons/heart.svg";
    // likesText.innerText = `${textNumber-1} ${textValues[1]}`;
-   likesText.innerText = `${textNumber-1} ${(textNumber - 1)=== 1 ? 'like' : 'likes'}`;
+    likesText.innerText = `${textNumber-1} ${(textNumber - 1)=== 1 ? 'like' : 'likes'}`;
   }
   
 }
@@ -97,9 +97,10 @@ const likeAPost = (like) => {
 
 const barraPesquisa = document.querySelector(".busca form");
 
-barraPesquisa.addEventListener("mouseover", ()=> {
-    barraPesquisa.style.boxShadow = "0px 1px 3px black"
-});
+barraPesquisa.onmouseover = function(){
+  barraPesquisa.style.boxShadow = "0px 1px 3px black"
+};
+
 
 barraPesquisa.addEventListener("mouseout", ()=> {
     barraPesquisa.style.boxShadow = "none"
@@ -163,8 +164,8 @@ async function fetchPosts() {
  
 
   //posts.slice(0, 10).forEach(post => {
-    const postHtml = createPost({fotoPost, racaSite});
-    botaoVerMais.insertAdjacentHTML('beforebegin', postHtml)
+  const postHtml = createPost({fotoPost, racaSite});
+  botaoVerMais.insertAdjacentHTML('beforebegin', postHtml)
   //})
 
 }
