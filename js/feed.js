@@ -181,4 +181,33 @@ window.addEventListener('scroll', function() {
   }
 })
 
+// const userDiv= `<a href="">
+// <div class="avatar-content">
+//   <img class="avatar" src="./img/avatar-example.png">
+//   <b>Nome do Usuário</b>
+// </div>
+// </a>`
 
+const nav = document.querySelector('nav');
+const username = localStorage.getItem("username");
+
+if(!username){
+  const anchor = document.createElement('a');
+  anchor.href = '/login';
+  anchor.innerText = 'Logar';
+  nav.appendChild(anchor);
+} else {
+  const div = document.createElement('div');
+  div.classList.add('avatar-content');
+  div.innerHTML = `
+  <img class="avatar" src="./img/avatar-example.png">
+  <div class="avatar-content">${username}</div>
+  <a href="./cadastro.html" onclick="logout()" >Sair</a>
+  `;
+  nav.appendChild(div);
+};
+
+function logout(){
+  localStorage.removeItem('username');
+  
+}

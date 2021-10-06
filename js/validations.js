@@ -118,10 +118,13 @@ function validateEmailInput(){
       body: JSON.stringify(user),
     }).then(response => {
       if(response.status === 201){
-        location = './feed.html';
+        return response.json()
       } else if ( response.status === 400){
         alert('Deu erro se vira')
       }
-      return response.json()
-    })
+     
+    }).then(data => {localStorage.setItem("username", data.username)
+        location = './feed.html'; });
+    // }).then(data => sessionStorage.setItem("username", data.username));
   });
+
