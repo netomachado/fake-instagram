@@ -128,3 +128,4 @@ function validateEmailInput(){
     // }).then(data => sessionStorage.setItem("username", data.username));
   });
 
+  

@@ -201,7 +201,7 @@ if(!username){
   div.classList.add('avatar-content');
   div.innerHTML = `
   <img class="avatar" src="./img/avatar-example.png">
-  <div class="avatar-content">${username}</div>
+  <div class="username">${username}</div>
   <a href="./cadastro.html" onclick="logout()" >Sair</a>
   `;
   nav.appendChild(div);
